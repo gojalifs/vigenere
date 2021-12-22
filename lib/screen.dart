@@ -38,6 +38,8 @@ class _ScreenState extends State<Screen> {
   bool fullVigenere = false;
   List<int> randomAlphabeth = [];
   String fromRandom = '';
+  String message =
+      'Jika anda menginginkan untuk membuat vigenere cipher dengan tipe Full Vigenere Cipher, maka anda bisa bengisi kotak alfabet ini, anda juga bisa generate alfabet secara random';
 
   void generateAlphabeth() {
     randomAlphabeth.clear();
@@ -136,13 +138,23 @@ class _ScreenState extends State<Screen> {
                                 return null;
                               }
                             },
-                            decoration: const InputDecoration(
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(5.0),
-                                  ),
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(5.0),
                                 ),
-                                hintText: 'Alphabeth (Optional)'),
+                              ),
+                              hintText: 'Alphabeth (Optional)',
+                              suffixIcon: Tooltip(
+                                message: message,
+                                padding: EdgeInsets.all(10),
+                                textStyle: TextStyle(
+                                    fontSize: 12, color: Colors.white),
+                                margin: EdgeInsets.symmetric(horizontal: 100),
+                                child: Icon(Icons.help),
+                                triggerMode: TooltipTriggerMode.tap,
+                              ),
+                            ),
                           ),
                         ),
                         const SizedBox(
