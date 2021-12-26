@@ -1,3 +1,5 @@
+import 'dart:math';
+
 class Logic {
 // Vigenere Cipher encryption and decryption
   String vigenere(String text, String key, bool fullVigenere, int encrypt,
@@ -18,7 +20,7 @@ class Logic {
       int x = 0, y = 0;
 
       if (cu == ' '.codeUnitAt(0)) {
-        result += " ";
+        result += "";
         continue;
       }
 
@@ -49,7 +51,13 @@ class Logic {
 
       j = (j + 1) % key.length;
     }
-
-    return result;
+    if (encrypt == 1) {
+      var r = Random().nextInt(4) + 1;
+      var s = result.replaceAllMapped(
+          RegExp(r'.{3}'), (match) => '${match.group(0)} ');
+      return s;
+    } else {
+      return result;
+    }
   }
 }
